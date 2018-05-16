@@ -10,7 +10,7 @@ use App\Http\Requests\UsersEditRequest;
 use App\User;
 use App\Role;
 use App\Photo;
-
+use Session;
 
 class AdminUsersController extends Controller
 {
@@ -47,7 +47,7 @@ class AdminUsersController extends Controller
     public function store(UsersRequest $request)
     {
 
-        if(trim($request)->password ==''){
+        if($request->password ==''){
             $input= $request->except('password');
         }else{
             $input = $request->all();
@@ -68,6 +68,8 @@ class AdminUsersController extends Controller
 
 
         User::create($input);
+        Session::flash('inserted_user','A new user has been created!');
+        
         return redirect('/admin/users');
         
     }
@@ -111,7 +113,7 @@ class AdminUsersController extends Controller
     {
         //
         $user= User::findOrFail($id);
-        if(trim($request)->password ==''){
+        if($request->password ==''){
             $input= $request->except('password');
         }
         else
@@ -133,7 +135,7 @@ class AdminUsersController extends Controller
      
 
         $user->update($input);
-
+        Session::flash('updated_user','The user has been updated!');
         return redirect('/admin/users');
 
         
@@ -147,6 +149,10 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user= User::findOrFail($id);
+        unlink(public_path(). $user->photo->file);
+        $user->delete();
+        Session::flash('deleted_user','The user has been deleted!');
+        return redirect('/admin/users');
     }
 }
