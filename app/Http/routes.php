@@ -27,7 +27,7 @@ Route::get('/home', 'HomeController@index');
 Route::group(['middleware'=>'admin'],function(){
 
     Route::resource('admin/users','AdminUsersController');
-    Route::resource('admin/posts','AdminUsersController');
+    Route::resource('admin/posts','AdminPostsController');
     //Για να σε κανει redirect στην αρχική αν δεν έχεις Admin Role
     Route::get('/admin',function(){
 

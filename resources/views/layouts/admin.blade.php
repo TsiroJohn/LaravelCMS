@@ -119,32 +119,13 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ route('admin.users.index') }}">All Users</a>
-                            </li>
-
-                            <li>
-                                <a href="{{ route('admin.users.create') }}">Create User</a>
-                            </li>
-
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a href="{{ route('admin.users.index') }}"><i class="fa fa-user fa-fw"></i>Users</a>
+                      
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/posts">All Posts</a>
-                            </li>
-
-                            <li>
-                                <a href="/posts/create">Create Post</a>
-                            </li>
-
-                        </ul>
+                        <a href="{{ route('admin.posts.index') }}"><i class="fa fa-pencil fa-fw"></i> Posts</a>
+                       
                         <!-- /.nav-second-level -->
                     </li>
 
@@ -164,7 +145,6 @@
                         <!-- /.nav-second-level -->
                     </li>
 
-
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -179,11 +159,6 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-
-
-
-
-
 
 
                     <li>
