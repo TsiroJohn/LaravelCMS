@@ -2,7 +2,19 @@
 
 @section('content')
 <div class="container">
-
+@if(Session::has('deleted_post'))
+    <div   class="alert alert-danger alert-dismissible fade in" data-auto-dismiss="2000" role="alert">{{ session('deleted_post') }}
+    <button type="button" class="close" data-dismiss="alert">x</button></div>
+    </div>
+@elseif(Session::has('inserted_post'))
+    <div id="success-alert" class="alert alert-success alert-dismissible fade in" data-auto-dismiss="2000" role="alert">{{ session('inserted_post') }}
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    </div>
+@elseif(Session::has('updated_post'))
+    <div  class="alert alert-success alert-dismissible fade in" data-auto-dismiss="2000" role="alert">{{ session('updated_post') }}
+    <button type="button" class="close" data-dismiss="alert">x</button></div>
+    </div>
+@endif
         <div class="row">
 
             <h1 style="display: inline-block">Posts</h1>
@@ -33,7 +45,7 @@
                         <td>{{$post->user->name}} </td>
                         <td>{{$post->category ? $post->category->name : 'No category'}}</td>
                         <td>{{$post->title}}</td>
-                        <td>{{$post->body}}</td>
+                        <td>{{ str_limit($post->body,20) }}</td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
                         <td>{{$post->updated_at->diffForHumans()}}</td>
                         <td><a  href="{{ route('admin.posts.edit',$post->id) }}" class="btn btn-info" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i>Edit</a></td>
