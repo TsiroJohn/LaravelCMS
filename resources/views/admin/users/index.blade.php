@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+<div class="">
 @if(Session::has('deleted_user'))
     <div   class="alert alert-danger alert-dismissible fade in" data-auto-dismiss="2000" role="alert">{{ session('deleted_user') }}
     <button type="button" class="close" data-dismiss="alert">x</button></div>

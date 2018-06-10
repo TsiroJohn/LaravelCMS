@@ -25,7 +25,7 @@
 
 
 
-
+@yield('styles')
 </head>
 
 <body id="admin-page">
@@ -124,7 +124,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.posts.index') }}"><i class="fa fa-pencil fa-fw"></i> Posts</a>
+                        <a href="{{ route('admin.posts.index') }}"><i class="fa fa-pencil fa-fw"></i>Posts</a>
                        
                         <!-- /.nav-second-level -->
                     </li>
@@ -137,17 +137,13 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="/media">All Media</a>
-                            </li>
-
-                            <li>
-                                <a href="">Upload Media</a>
-                            </li>
-
-                        </ul>
+                        <a href="{{ route('admin.media.index') }}"><i class="fa fa-image fa-fw"></i>Media</a>
+                       
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.comments.index') }}"><i class="fa fa-comments fa-fw"></i>Comments</a>
+                       
                         <!-- /.nav-second-level -->
                     </li>
 
@@ -315,7 +311,7 @@
 <script src="{{asset('js/libs.js')}}"></script>
 
 
-@yield('footer')
+@yield('scripts')
 
 
 
