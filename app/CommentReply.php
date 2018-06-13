@@ -11,8 +11,7 @@ class CommentReply extends Model
 
     protected $fillable = [
         'comment_id',
-        'author',
-        'email',
+        'user_id',
         'body',
         'is_active'
     ];

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use Auth;
+use Session;
+use App\CommentReply;
+use App\Comment;
 class CommentRepliesController extends Controller
 {
     /**
@@ -36,7 +39,7 @@ class CommentRepliesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -48,6 +51,9 @@ class CommentRepliesController extends Controller
     public function show($id)
     {
         //
+        $comment = Comment::findOrFail($id);
+        $replies = $comment->replies;
+        return view('admin.comments.replies.show',compact('replies'));
     }
 
     /**
@@ -71,8 +77,19 @@ class CommentRepliesController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
+        CommentReply::findOrFail($id)->update($request->all());
 
+        if ($request->is_active==1)
+        {
+            $request->session()->flash('reply_approved','The reply has been approved!');
+        }
+        else
+        {
+            $request->session()->flash('reply_unapproved','The reply has been un-approved!');
+        }
+        
+        return redirect()->back();
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -81,6 +98,26 @@ class CommentRepliesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CommentReply::findOrFail($id)->delete();
+    
+
+        Session::flash('reply_deleted','The reply has been deleted!');
+        return redirect()->back();
+    }
+
+    public function createReply(Request $request){
+
+        $user = Auth::user();
+        $data = [
+            'comment_id' => $request->comment_id,
+            'user_id'=> $user->id,
+            'body' => $request->body
+        ];
+        CommentReply::create($data);
+
+        $request->session()->flash('reply_message','Your reply has been submitted and is waiting approval');
+
+        return redirect()->back();
+
     }
 }
