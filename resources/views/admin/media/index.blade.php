@@ -27,8 +27,7 @@
                             <table class='table'>
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Name</th>                        
+                                        <th>Id</th>                       
                                         <th>Photo</th>                        
                                         <th>Created</th>
                                         <th>Updated</th>
@@ -39,9 +38,8 @@
                                     @if($photos)
                                         @foreach($photos as $photo)
                                         <tr>
-                                        <td>{{$photo->id}}</td>
-                                        <td>{{$photo->name}} </td>            
-                                        <td><img height=50px src="{{ $photo->file ? $photo->file : 'http://placehold.it/150x150'}}" alt=""></td>
+                                        <td>{{$photo->id}}</td>          
+                                        <td><img height="65px" width="65px" src="{{ $photo->file ? $photo->file : 'http://placehold.it/150x150'}}" alt=""></td>
                                         <td>{{$photo->created_at ? $photo->created_at->diffForHumans() : 'No date'}}</td>
                                         <td>{{$photo->updated_at->diffForHumans()}}</td>
                                         {!! Form::open(['id'=>'deleteButton','method'=>'DELETE','action'=>['AdminMediaController@destroy',$photo->id],'onsubmit' => 'return ConfirmDelete()']) !!}

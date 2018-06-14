@@ -46,8 +46,11 @@
                                 <td>{{$comment->created_at ? $comment->created_at->diffForHumans() : 'No date'}}</td>
                                 <td>{{$comment->updated_at ? $comment->updated_at->diffForHumans() : 'No date'}}</td>
                                 <td><a class="btn btn-primary" href="{{ route('home.post',$comment->post->id) }}"><i class="fa fa-eye fa-fw"></i>View Post</a> </td>
-                                <td><a class="btn btn-primary" href="{{ route('admin.comment.replies.show',$comment->id) }}"><i class="fa fa-eye fa-fw"></i>View Replies</a> </td>
-
+                                @if (count($comment->replies)>0)
+                                <td><a class="btn btn-success" href="{{ route('admin.comment.replies.show',$comment->id) }}"><i class="fa fa-eye fa-fw"></i>View Replies</a> </td>                                             
+                                @else
+                                <td><a disabled class="btn btn-success" href="{{ route('admin.comment.replies.show',$comment->id) }}"><i class="fa fa-eye fa-fw"></i>View Replies</a> </td>                                              
+                                @endif
                                     @if($comment->is_active == 1)
                                                         
                                         {!! Form::open(['method'=>'PATCH','action'=>['PostCommentsController@update',$comment->id]]) !!}

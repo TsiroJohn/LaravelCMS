@@ -24,7 +24,7 @@ class AdminUsersController extends Controller
     public function index()
     {
         //
-        $users= User::all();
+        $users= User::paginate(5);
         return view('admin.users.index',compact('users'));
     }
 
@@ -36,7 +36,7 @@ class AdminUsersController extends Controller
     public function create()
     {
         //
-        $roles=Role::lists('name','id')->all();
+        $roles=Role::pluck('name','id')->all();
         return view('admin.users.create',compact('roles'));
     }
 
@@ -99,7 +99,7 @@ class AdminUsersController extends Controller
     {
         //
         $user=User::findOrFail($id);
-        $roles = Role::lists('name','id')->all();
+        $roles = Role::pluck('name','id')->all();
         return view('admin.users.edit',compact('user','roles'));
         
     }

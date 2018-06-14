@@ -42,21 +42,21 @@
                         @foreach($posts as $post)
                         <tr>
                         <td>{{$post->id}}</td>
-                        <td><img height=75px src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/150x150'}}" alt=""></td>
+                        <td><img height="65px" width="65px" src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/150x150'}}" alt=""></td>
                         <td>{{$post->user->name}} </td>
                         <td>{{$post->category ? $post->category->name : 'No category'}}</td>
                         <td>{{$post->title}}</td>
                         <td>{{ str_limit($post->body,20) }}</td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
                         <td>{{$post->updated_at->diffForHumans()}}</td>
-                        <td><a class="btn btn-primary" href="{{ route('home.post',$post->id) }}"><i class="fa fa-eye fa-fw"></i> Post</a> </td>
+                        <td><a class="btn btn-primary" href="{{ route('home.post',$post->id) }}"><i class="fa fa-eye fa-fw"></i> View</a> </td>
                              @if (count($post->comments)>0)
                                 <td><a  class="btn btn-success"  href="{{ route('admin.comments.show',$post->id) }}"><i class="fa fa-eye fa-fw"></i> Comments</a> </td>                                                
                              @else
                              <td><a disabled class="btn btn-success" href="{{ route('admin.comments.show',$post->id) }}"><i class="fa fa-eye fa-fw"></i> Comments</a> </td>                                                
                                 @endif
                         
-                        <td><a  href="{{ route('admin.posts.edit',$post->id) }}" class="btn btn-info" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i> Edit</a></td>
+                        <td><a  href="{{ route('admin.posts.edit',$post->id) }}" class="btn btn-warning" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i> Edit</a></td>
                         {!! Form::open(['id'=>'deleteButton','method'=>'DELETE','action'=>['AdminPostsController@destroy',$post->id],'onsubmit' => 'return ConfirmDelete()']) !!}
                         <td>{!! Form::button( '<i class="fa fa-trash fa-fw"></i><span> Delete</span>', ['type' => 'submit', 'class' => 'btn btn-danger'] ) !!}</td>
                         {!! Form::close() !!}
