@@ -65,6 +65,12 @@
                     @endif
                 </tbody>
             </table>
+
+            <div class="row">
+                <div class="col-md-6 col-md-offset-5">
+                    {{ $posts->render() }}
+                </div>
+            </div>
         </div>
 </div>
 @stop

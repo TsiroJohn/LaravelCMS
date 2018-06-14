@@ -44,7 +44,7 @@
                   @foreach($users as $user)
                   <tr>
                   <td>{{$user->id}}</td>
-                  <td><img height=50px src="{{ $user->photo ? $user->photo->file : 'http://placehold.it/150x150'}}" alt=""></td>
+                  <td><img height=50px width="50" src="{{ $user->photo ? $user->photo->file : Auth::user()->gravatar }}" alt=""></td>
                   <td>{{$user->name}} </td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->role->name}}</td>
