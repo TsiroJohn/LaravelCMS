@@ -2,11 +2,23 @@
 
 namespace App;
 
+// use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
     //
+    // use Sluggable;
+
+    // public function sluggable()
+    // {
+    //     return [
+    //         'slug' => [
+    //             'source' => 'title'
+    //         ]
+    //     ];
+    // }
+
 protected $fillable=[
     'category_id',
     'photo_id',
@@ -32,6 +44,10 @@ public function category(){
 
 public function comments(){
     return $this->hasMany('App\Comment');
+}
+
+public function photoPlaceholdere(){
+    return "http://placehold.it/150x150";
 }
 
 }

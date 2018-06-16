@@ -55,7 +55,7 @@ class AdminPostsController extends Controller
     {
         
         $input = $request->all();
-        $user = Auth::user();
+         $user = Auth::user();
 
         if($file = $request->file('photo_id')){
           $name= time().$file->getClientOriginalName();
@@ -64,7 +64,7 @@ class AdminPostsController extends Controller
           $input['photo_id']= $photo-> id;
         }
 
-        $user->posts()->create($input);
+         $user->posts()->create($input);
         Session::flash('inserted_post','A new post has been created!');
 
         return redirect('/admin/posts');
