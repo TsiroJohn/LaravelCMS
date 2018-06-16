@@ -53,6 +53,7 @@ Route::group(['middleware'=>'admin'],function(){
         'edit'=>'admin.media.edit',
     ]]);
 
+
     Route::resource('admin/comments','PostCommentsController',['names'=>[
         'index'=>'admin.comments.index',
         'create'=>'admin.comments.create',

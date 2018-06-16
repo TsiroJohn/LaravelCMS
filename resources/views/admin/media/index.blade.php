@@ -24,6 +24,7 @@
 
             </div>     
             <div class="row">
+            
                             <table class='table'>
                                 <thead>
                                     <tr>
@@ -43,18 +44,24 @@
                                         <td>{{$photo->created_at ? $photo->created_at->diffForHumans() : 'No date'}}</td>
                                         <td>{{$photo->updated_at->diffForHumans()}}</td>
                                         {!! Form::open(['id'=>'deleteButton','method'=>'DELETE','action'=>['AdminMediaController@destroy',$photo->id],'onsubmit' => 'return ConfirmDelete()']) !!}
-                        <td>{!! Form::button( '<i class="fa fa-trash fa-fw"></i><span>Delete</span>', ['type' => 'submit', 'class' => 'btn btn-danger'] ) !!}</td>
+                                         <td>{!! Form::button( '<i class="fa fa-trash fa-fw"></i><span>Delete</span>', ['type' => 'submit', 'class' => 'btn btn-danger'] ) !!}</td>
                                          {!! Form::close() !!}
                                         </tr>
                                         @endforeach
                                     @endif
                                 </tbody>
                             </table>
+   
+
             </div>
            
 </div>
 
 @stop
+
+
+@section('scripts')
+
 
 <script type="text/javascript">
 
@@ -68,3 +75,4 @@ else
 return false;
 }
 </script>
+@stop

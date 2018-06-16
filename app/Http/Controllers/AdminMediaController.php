@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Photo;
 use Session;
+use File;
 
 class AdminMediaController extends Controller
 {
@@ -52,5 +53,20 @@ class AdminMediaController extends Controller
 
     }
 
+    public function deleteMedia(Request $request){
+
+        $photos = Photo::findOrfail($request->checkBoxArray);
+        foreach($photos as $photo)
+        {
+            $photo->delete();
+        }
+
+        If(isset($photo->file)){
+            if(File::exists(public_path(). isset($photo->file))){
+                File::delete(public_path(). $photo->file);
+              }}
+              Session::flash('deleted_photo','The photo has been deleted!');
+        return redirect('/admin/media');
+    }
  
 }
