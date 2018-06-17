@@ -49,7 +49,7 @@
                         <td>{{ str_limit($post->body,20) }}</td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
                         <td>{{$post->updated_at->diffForHumans()}}</td>
-                        <td><a class="btn btn-primary" href="{{ route('home.post',$post->id) }}"><i class="fa fa-eye fa-fw"></i> View</a> </td>
+                        <td><a class="btn btn-primary" href="{{ route('home.post',$post->slug) }}"><i class="fa fa-eye fa-fw"></i> View</a> </td>
                              @if (count($post->comments)>0)
                                 <td><a  class="btn btn-success"  href="{{ route('admin.comments.show',$post->id) }}"><i class="fa fa-eye fa-fw"></i> Comments</a> </td>                                                
                              @else
