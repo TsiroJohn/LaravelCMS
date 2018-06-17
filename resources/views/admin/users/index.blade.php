@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<h1 class="page-header">Users</h1>
 <div class="">
 @if(Session::has('deleted_user'))
     <div   class="alert alert-danger alert-dismissible fade in" data-auto-dismiss="2000" role="alert">{{ session('deleted_user') }}
@@ -18,8 +19,6 @@
 
 
       <div class="row">
-
-      <h1 style="display: inline-block">Users</h1>
 
       <a style="position:relative;bottom:8px;margin-left:10px" href="{{route('admin.users.create')}}" class="btn btn-primary " role="button"> <i class="glyphicon glyphicon-plus fa-fw"></i>Create</a>
       </div>

@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<h1 class="page-header">Media</h1>
 <div class="">
 
     @if(Session::has('deleted_photo'))
@@ -17,8 +18,6 @@
     </div>
 @endif
             <div class="row">
-
-                <h1 style="display: inline-block">Media</h1>
 
                 <a style="position:relative;bottom:8px;margin-left:10px" href="{{route('admin.media.create')}}" class="btn btn-primary " role="button"> <i class="glyphicon glyphicon-plus fa-fw"></i>Upload</a>
 

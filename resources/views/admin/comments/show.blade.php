@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<h1 class="page-header">Comments</h1>
 <div class="">
 
 @if(Session::has('comment_approved'))
@@ -18,7 +19,6 @@
 @endif
          <div class="row">
 
-             <h1 style="display: inline-block">Comments</h1>
          </div>
                 <div class="row">
                     <table class='table'>
@@ -45,7 +45,7 @@
                                 <td>{{$comment->is_active==1 ? 'Approved':'Not Approved'}} </td>                                
                                 <td>{{$comment->created_at ? $comment->created_at->diffForHumans() : 'No date'}}</td>
                                 <td>{{$comment->updated_at ? $comment->updated_at->diffForHumans() : 'No date'}}</td>
-                                <td><a class="btn btn-primary" href="{{ route('home.post',$comment->post->id) }}"><i class="fa fa-eye fa-fw"></i>View Post</a> </td>
+                                <td><a class="btn btn-primary" href="{{ route('home.post',$comment->post->slug) }}"><i class="fa fa-eye fa-fw"></i>View Post</a> </td>
 
                                     @if($comment->is_active == 1)
                                                         

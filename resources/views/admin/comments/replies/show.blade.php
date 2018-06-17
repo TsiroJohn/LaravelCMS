@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<h1 class="page-header">Replies</h1>
 <div class="">
 
 @if(Session::has('reply_approved'))
@@ -18,7 +19,6 @@
 @endif
          <div class="row">
 
-             <h1 style="display: inline-block">Replies</h1>
          </div>
                 <div class="row">
                     <table class='table'>
@@ -47,7 +47,7 @@
                                 <td>{{$reply->is_active==1 ? 'Approved':'Not Approved'}} </td>                                
                                 <td>{{$reply->created_at ? $reply->created_at->diffForHumans() : 'No date'}}</td>
                                 <td>{{$reply->updated_at ? $reply->updated_at->diffForHumans() : 'No date'}}</td>
-                                <td><a class="btn btn-primary" href="{{ route('home.post',$reply->comment->post->id) }}"><i class="fa fa-eye fa-fw"></i>View Post</a> </td>
+                                <td><a class="btn btn-primary" href="{{ route('home.post',$reply->comment->post->slug) }}"><i class="fa fa-eye fa-fw"></i>View Post</a> </td>
 
                                     @if($reply->is_active == 1)
                                                         

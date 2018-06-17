@@ -12,10 +12,7 @@
 */
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/','HomeController@index' );
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
@@ -53,7 +50,6 @@ Route::group(['middleware'=>'admin'],function(){
         'edit'=>'admin.media.edit',
     ]]);
 
-
     Route::resource('admin/comments','PostCommentsController',['names'=>[
         'index'=>'admin.comments.index',
         'create'=>'admin.comments.create',
@@ -67,11 +63,7 @@ Route::group(['middleware'=>'admin'],function(){
     ]]);
 
     //Για να σε κανει redirect στην αρχική αν δεν έχεις Admin Role
-    Route::get('/admin',function(){
-
-        return view('admin.index');
-    
-    });
+    Route::get('/admin','AdminController@index');
 });
 
 Route::group(['middleware'=>'auth'],function(){
