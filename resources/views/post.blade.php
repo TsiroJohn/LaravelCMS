@@ -132,25 +132,7 @@
 
 @stop
 
-@section('categories')
-<h4>Blog Categories</h4>
-    
-                  
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <ul class="list-unstyled">
-                                @if($categories)
-                                    @foreach($categories as $category)
-                                    <li><a href="#">{{ $category->name }}</a>
-                                    </li>
-                                    @endforeach
-                                @endif  
-                              
-                            </ul>
-                        
-                        </div>
-                    </div>
-@stop
+
 
 @section('scripts')
 <script>

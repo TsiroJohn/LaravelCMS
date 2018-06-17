@@ -3,7 +3,8 @@
 @section('content')
 @include('includes.tinyeditor')
 
-<h1>Edit Post</h1>
+<h1 class="page-header">Edit Post</h1>
+
                 <div class=row>
                         <div class="col-md-3">
                         <img src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}" alt="" class="img-responsive img-rounded">

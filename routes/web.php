@@ -19,7 +19,7 @@ Route::get('/home', 'HomeController@index');
 
 // Route::resource('admin/users','AdminUsersController');
 
-Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
+Route::get('/post/{id}',['as'=>'home.post','uses'=>'HomeController@post']);
 
 
 
@@ -63,7 +63,8 @@ Route::group(['middleware'=>'admin'],function(){
     ]]);
 
     //Για να σε κανει redirect στην αρχική αν δεν έχεις Admin Role
-    Route::get('/admin','AdminController@index');
+Route::get('/admin','AdminController@index');
+
 });
 
 Route::group(['middleware'=>'auth'],function(){

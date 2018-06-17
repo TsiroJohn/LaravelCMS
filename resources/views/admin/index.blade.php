@@ -5,7 +5,17 @@
     
     <div class="row">
             <div class="col-md-6">
-                 <canvas id="myChart"></canvas>
+            <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart 
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                 
             </div>
     </div>
 <hr>

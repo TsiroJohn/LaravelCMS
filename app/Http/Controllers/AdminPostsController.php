@@ -144,14 +144,5 @@ class AdminPostsController extends Controller
         
     }
 
-    public function post($slug){
-        $post = Post::findBySlugOrFail($slug);
-
-        $categories=Category::all();
-        
-        $comments = $post->comments()->whereIsActive(1)->get();
-        
-        return view('post',compact('post','categories','comments'));
-
-    }
+   
 }

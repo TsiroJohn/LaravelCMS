@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Create Category</h1>
+<h1 class="page-header">Create Category</h1>
 
 {!! Form::open(['method'=>'POST','action'=>'AdminCategoriesController@store','files'=>true]) !!}
     <div class="row">

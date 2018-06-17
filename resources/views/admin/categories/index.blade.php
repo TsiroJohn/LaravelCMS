@@ -31,6 +31,7 @@
                 <th>Created</th>
                 <th>Updated</th>
 
+
             </tr>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@
                 <td>{{$category->created_at ? $category->created_at->diffForHumans() : 'No date'}}</td>
                 <td>{{$category->updated_at ? $category->updated_at->diffForHumans() : 'No date'}}</td>
                 <td><a  href="{{ route('admin.categories.edit',$category->id) }}" class="btn btn-warning pull-right" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i>Edit</a></td>
+                
                 {!! Form::open(['id'=>'deleteButton','method'=>'DELETE','action'=>['AdminCategoriesController@destroy',$category->id],'onsubmit' => 'return ConfirmDelete()']) !!}
                 <td>{!! Form::button( '<i class="fa fa-trash fa-fw"></i><span>Delete</span>', ['type' => 'submit', 'class' => 'btn btn-danger '] ) !!}</td>
                 {!! Form::close() !!}

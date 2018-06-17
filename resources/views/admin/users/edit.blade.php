@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Edit User</h1>
+<h1 class="page-header">Edit User</h1>
+
 <div class="row">
 <div class="col-md-3">
 <img src="{{ $user->photo ? $user->photo->file : 'http://placehold.it/400x400'}}" alt="" class="img-responsive img-rounded">

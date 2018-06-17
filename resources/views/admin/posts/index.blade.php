@@ -27,11 +27,10 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Photo</th>                        
+                        <th>Photo</th>   
+                        <th>Title</th>
                         <th>User</th>
                         <th>Category</th>
-                        <th>Title</th>
-                        <th>Body</th>
                         <th>Created</th>
                         <th>Updated</th>
 
@@ -43,10 +42,9 @@
                         <tr>
                         <td>{{$post->id}}</td>
                         <td><img height="65px" width="65px" src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/150x150'}}" alt=""></td>
+                        <td>{{$post->title}}</td>
                         <td>{{$post->user->name}} </td>
                         <td>{{$post->category ? $post->category->name : 'No category'}}</td>
-                        <td>{{$post->title}}</td>
-                        <td>{{ str_limit($post->body,20) }}</td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
                         <td>{{$post->updated_at->diffForHumans()}}</td>
                         <td><a class="btn btn-primary" href="{{ route('home.post',$post->slug) }}"><i class="fa fa-eye fa-fw"></i> View</a> </td>
