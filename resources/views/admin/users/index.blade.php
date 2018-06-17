@@ -49,8 +49,8 @@
                   <td>{{$user->email}}</td>
                   <td>{{$user->role->name}}</td>
                   <td>{{$user->is_active==1 ? 'Active':'No Active'}}</td>
-                  <td>{{$user->created_at->diffForHumans()}}</td>
-                  <td>{{$user->updated_at->diffForHumans()}}</td>
+                  <td>{{ $user->created_at  ? $user->created_at->diffForHumans() : 'No created date'}}</td>
+                  <td>{{ $user->updated_at  ? $user->updated_at->diffForHumans() : 'No updated date'}}</td>
                   <td><a  href="{{ route('admin.users.edit',$user->id) }}" class="btn btn-warning" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i>Edit</a></td>
 
                   {!! Form::open(['id'=>'','method'=>'DELETE','action'=>['AdminUsersController@destroy',$user->id],'onsubmit' => 'return ConfirmDelete()']) !!}
