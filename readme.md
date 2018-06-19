@@ -40,4 +40,4 @@ Finally, serve the application.
     $ php artisan serve
 
 Open [http://localhost:8000](http://localhost:8000) from your browser. 
-The application comes with default admin with email address `admin@admin.com` and `123456`.
+The application comes with default admin with email address `admin@gmail.com` and `123456`.

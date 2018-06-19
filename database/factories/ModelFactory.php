@@ -32,21 +32,6 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Role::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->randomElement(['administrator','author','subscriber']),
-        
-
-    ];
-});
-
-$factory->define(App\Category::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->randomElement(['PHP','Javascript','Laravel','Eloquent','Microsoft']),
-        
-
-    ];
-});
 
 $factory->define(App\Photo::class, function (Faker\Generator $faker) {
     return [

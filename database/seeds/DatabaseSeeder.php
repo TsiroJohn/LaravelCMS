@@ -20,12 +20,44 @@ class DatabaseSeeder extends Seeder
         DB::table('comments')->truncate();
         DB::table('comment_replies')->truncate();
 
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'role_id' => 1,
+            'is_active' => 1,
+            'password' => bcrypt(123456),
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'administrator',
+        ]);
+        DB::table('roles')->insert([
+            'name' => 'author',
+        ]);
+        DB::table('roles')->insert([
+            'name' => 'subscriber',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'General',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Programming',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Tech',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Science',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Music',
+        ]);
+
         factory(App\User::class,10)->create()->each(function($user){
             $user->posts()->save(factory(App\Post::class)->make());
         });
 
-        factory(App\Role::class,3)->create();
-        factory(App\Category::class,5)->create();
         factory(App\Photo::class,1)->create();
 
         factory(App\Comment::class,10)->create()->each(function($c){
