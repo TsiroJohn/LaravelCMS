@@ -16,6 +16,9 @@ use App\Comment;
 use File;
 use Session;
 use Alert;
+use View;
+use Response;
+use Redirect;
 class AdminPostsController extends Controller
 {
     /**
@@ -26,9 +29,16 @@ class AdminPostsController extends Controller
     
     public function index()
     {
-        $posts= Post::paginate(5);
 
-        return view('admin.posts.index',compact('posts'));
+
+        $posts = Post::paginate(5);
+        // if (request()->ajax()) {
+        //     return Response::json(View::make('admin.posts.index', compact('posts'))->render());
+        //     return view('posts', ['posts' => $posts])->render(); 
+        // }
+        return view('admin.posts.index', compact('posts'));
+
+        // return view('admin.posts.index',compact('posts'));
     }
 
     /**
@@ -65,9 +75,13 @@ class AdminPostsController extends Controller
         }
 
          $user->posts()->create($input);
-        Session::flash('inserted_post','A new post has been created!');
+        // Session::flash('inserted_post','A new post has been created!');
 
-        return redirect('/admin/posts');
+        $notification = array(
+            'message' => 'A new post has been created!', 
+            'alert-type' => 'success'
+        );
+          return Redirect::to('admin/posts')->with($notification);
 
     }
 
@@ -117,10 +131,14 @@ class AdminPostsController extends Controller
 
         //   Auth::user()->posts()->whereId($id)->first()->update($input);
           Post::findOrFail($id)->update($input);
-          Session::flash('updated_post','The post has been updated!');
-        
-          return redirect('admin/posts');
+        //   Session::flash('updated_post','The post has been updated!');
 
+
+          $notification = array(
+            'message' => 'The post has been succesfully updated', 
+            'alert-type' => 'success'
+        );
+          return Redirect::to('admin/posts')->with($notification);
     }
 
     /**
@@ -138,8 +156,8 @@ class AdminPostsController extends Controller
           }}
         
 
-          Session::flash('deleted_post','The post has been deleted!');
-        return redirect('/admin/posts');
+        //   Session::flash('deleted_post','The post has been deleted!');
+        return  response()->json($post);
         
         
     }

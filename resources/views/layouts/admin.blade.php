@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
 
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,8 +102,52 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
+<!-- <script language="JavaScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <script src="{{asset('js/libs.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+<script>
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "500",
+        "timeOut": "2500",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+
+  @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type', 'info') }}";
+    switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+        
+        case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+
+        case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+
+        case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+    }
+  @endif
+</script>
 
 @yield('scripts')
 
