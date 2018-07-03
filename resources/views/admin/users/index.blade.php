@@ -55,7 +55,7 @@
                         </ul>
                 </div>
                 <div class="users panel-body">
-                        <table class='table table-striped table-bordered table-hover'>
+                        <table id="myTable" class='table table-hover'>
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -94,28 +94,16 @@
                         </table>
                 </div>
              </div>
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-5">
-                            {{ $users->links() }}
-                        </div>
-                    </div>
       
         </div>
 
 @stop   
 @section('scripts')
 <script type="text/javascript">
-  
-
-     function ConfirmDelete()
-  {
-  var x =  confirm("Are you sure want to remove this user?");
-
-  if (x)
-    return true;
-  else
-    return false;
-  }
+ 
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
 
 
   $(document).on('click', '.delete-button', function (e) {
@@ -151,7 +139,7 @@ var el = this;
                                                 $(el).closest('tr').fadeOut(800, function(){ 
                                                 $(this).remove();
                                                 });
-                                                //   $('.item' + id).remove();
+                                                
                                              },
                                             error : function () {
                                                 toastr.error('The user could not be deleted!', 'Error');    

@@ -13,7 +13,8 @@ use App\Photo;
 use File;
 use Session;
 use Alert;
-
+use Response;
+use Redirect;
 class AdminUsersController extends Controller
 {
     /**
@@ -24,7 +25,7 @@ class AdminUsersController extends Controller
     public function index()
     {
         //
-        $users= User::paginate(5);
+        $users= User::all();
         return view('admin.users.index',compact('users'));
     }
 
@@ -69,10 +70,14 @@ class AdminUsersController extends Controller
         }   
 
 
-        User::create($input);
-        Session::flash('inserted_user','A new user has been created!');
+        User::create($input);    
+
+          $notification = array(
+            'message' => 'A new post has been created!', 
+            'alert-type' => 'success'
+        );
+          return Redirect::to('admin/users')->with($notification);
         
-        return redirect('/admin/users');
         
     }
 
@@ -137,8 +142,13 @@ class AdminUsersController extends Controller
      
 
         $user->update($input);
-        Session::flash('updated_user','The user has been updated!');
-        return redirect('/admin/users');
+        
+        $notification = array(
+            'message' => 'The user has been succesfully updated', 
+            'alert-type' => 'success'
+        );
+          return Redirect::to('admin/users')->with($notification);
+        
 
         
     }
@@ -159,9 +169,9 @@ class AdminUsersController extends Controller
         
         // unlink(public_path(). $user->photo->file);
         $user->delete();
-        Session::flash('deleted_user','The user has been deleted!');
+        // Session::flash('deleted_user','The user has been deleted!');
 
-        return redirect('/admin/users');
+        return  response()->json($user);
     }
 
     

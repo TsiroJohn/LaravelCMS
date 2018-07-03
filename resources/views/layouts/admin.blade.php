@@ -16,7 +16,7 @@
 
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,7 +25,20 @@
     <![endif]-->
 
 
-
+<style>
+    .progress {
+    display: block;
+    text-align: center;
+    width: 0;
+    height: 3px;
+    background: red;
+    transition: width .3s;
+}
+.progress.hide {
+    opacity: 0;
+    transition: opacity 1.3s;
+}
+</style>
 @yield('styles')
 </head>
 
@@ -80,8 +93,6 @@
 
 
 
-
-
 <!-- Page Content -->
 <div id="page-wrapper">
     <div class="container-fluid">
@@ -106,7 +117,7 @@
 <script src="{{asset('js/libs.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script>
 
     toastr.options = {

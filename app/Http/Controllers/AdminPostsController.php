@@ -31,7 +31,8 @@ class AdminPostsController extends Controller
     {
 
 
-        $posts = Post::paginate(5);
+        // $posts = Post::paginate(5);
+        $posts = Post::all();
         // if (request()->ajax()) {
         //     return Response::json(View::make('admin.posts.index', compact('posts'))->render());
         //     return view('posts', ['posts' => $posts])->render(); 
@@ -137,7 +138,7 @@ class AdminPostsController extends Controller
           $notification = array(
             'message' => 'The post has been succesfully updated', 
             'alert-type' => 'success'
-        );
+            );
           return Redirect::to('admin/posts')->with($notification);
     }
 

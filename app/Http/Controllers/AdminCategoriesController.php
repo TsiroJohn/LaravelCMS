@@ -10,7 +10,8 @@ use App\Http\Requests\CategoriesCreateRequest;
 use App\Category;
 use Session;
 use Alert;
-
+use Response;
+use Redirect;
 class AdminCategoriesController extends Controller
 {
     /**
@@ -22,6 +23,7 @@ class AdminCategoriesController extends Controller
     {
         //
         $categories = Category::all();
+        
         return view('admin.categories.index',compact('categories'));
     }
 
@@ -48,9 +50,12 @@ class AdminCategoriesController extends Controller
         //
         Category::create($request->all());
 
-        Session::flash('inserted_category','A new category has been created!');
+        $notification = array(
+            'message' => 'A new category has been created!', 
+            'alert-type' => 'success'
+        );
+          return Redirect::to('admin/categories')->with($notification);
         
-        return redirect('/admin/categories');
     }
 
     /**
@@ -88,9 +93,12 @@ class AdminCategoriesController extends Controller
     {
         Category::findOrFail($id)->update($request->all());
 
-        Session::flash('updated_categories','The category has been updated!');
+        $notification = array(
+            'message' => 'The category has been succesfully updated', 
+            'alert-type' => 'success'
+            );
+          return Redirect::to('admin/categories')->with($notification);
         
-        return redirect('/admin/categories');
         
     }
 
@@ -103,10 +111,9 @@ class AdminCategoriesController extends Controller
     public function destroy($id)
     {
         
-            Category::findOrFail($id)->delete();
+            $category=Category::findOrFail($id)->delete();
 
-            Session::flash('deleted_category','The category has been deleted!');
-    
-            return redirect('/admin/categories');
+            return  response()->json($category);
+
     }
 }

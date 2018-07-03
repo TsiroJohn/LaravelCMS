@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             'role_id' => 1,
             'is_active' => 1,
             'password' => bcrypt(123456),
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
 
         DB::table('roles')->insert([
@@ -40,18 +42,28 @@ class DatabaseSeeder extends Seeder
 
         DB::table('categories')->insert([
             'name' => 'General',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
         DB::table('categories')->insert([
             'name' => 'Programming',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
         DB::table('categories')->insert([
             'name' => 'Tech',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
         DB::table('categories')->insert([
             'name' => 'Science',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
         DB::table('categories')->insert([
             'name' => 'Music',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
 
         factory(App\User::class,10)->create()->each(function($user){

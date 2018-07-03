@@ -31,7 +31,7 @@
 
 @section('content')
 <h1 class="page-header">Posts</h1>
-<div class="">
+
 @if(Session::has('deleted_post'))
     <div   class="alert alert-danger alert-dismissible fade in" data-auto-dismiss="2000" role="alert">{{ session('deleted_post') }}
     <button type="button" class="close" data-dismiss="alert">x</button></div>
@@ -58,7 +58,7 @@
                     </ul>
                 </div>
                 <div class="posts panel-body">
-                    <table  class='table table-striped table-bordered table-hover'>
+                    <table id="myTable" class='table  table-hover'>
                         <thead>
                             <tr>
                              
@@ -102,30 +102,16 @@
                 </div>
             </div>
 
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-5">
-                        {{ $posts->links() }}
-                    </div>
-                </div>
+         
         </div>
-</div>
+
 @stop
 @section('scripts')
 <script type="text/javascript">
   
-  function ConfirmDelete()
-{
-var x = confirm("Are you sure you want to delete?");
-if (x)
- return true;
-else
- return false;
-}
-
-// $(document).ajaxStop(function(){
-//     $("#table").load(" #table");
-// });
-
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
 
 
 $(document).on('click', '.delete-button', function (e) {
