@@ -88,9 +88,6 @@
                                 <td>
                                 <a class="btn btn-success" href="{{ route('home.post',$post->slug) }}"><i class="fa fa-eye fa-fw"></i> View</a>
                                 <a  class="btn btn-primary @if (!count($post->comments)>0) disabled @endif"  href="{{ route('admin.comments.show',$post->id) }}"><i class="fa fa-eye fa-fw"></i> Comments</a> <a  href="{{ route('admin.posts.edit',$post->id) }}" class="btn btn-warning" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i> Edit</a>
-                                <!-- {!! Form::open(['id'=>'deleteButton','method'=>'DELETE','action'=>['AdminPostsController@destroy',$post->id],'onsubmit' => 'return ConfirmDelete()']) !!} -->
-                                <!-- <td>{!! Form::button( '<i class="fa fa-trash fa-fw"></i><span> Delete</span>', ['type' => 'submit', 'class' => 'btn btn-danger'] ) !!}</td> -->
-                                <!-- {!! Form::close() !!} -->
                                 <button class="delete-button btn btn-danger"  data-id="{{$post->id}}" data-title="{{$post->title}}" data-content="{{$post->body}}">
                                                 <span class="glyphicon glyphicon-trash"></span> Delete</button>
                                 </td>
@@ -105,11 +102,11 @@
                 </div>
             </div>
 
-            <div class="row">
-            <div class="col-md-6 col-md-offset-5">
-                    {{ $posts->links() }}
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-5">
+                        {{ $posts->links() }}
+                    </div>
                 </div>
-            </div>
         </div>
 </div>
 @stop
@@ -177,33 +174,33 @@ $(document).on('click', '.delete-button', function (e) {
 }); 
 
 
-    $(window).on('hashchange', function() {
-        if (window.location.hash) {
-            var page = window.location.hash.replace('#', '');
-            if (page == Number.NaN || page <= 0) {
-                return false;
-            } else {
-                getPosts(page);
-            }
-        }
-    });
-    $(document).ready(function() {
-        $(document).on('click', '.pagination a', function (e) {
-            getPosts($(this).attr('href').split('page=')[1]);
-            e.preventDefault();
-        });
-    });
-    function getPosts(page) {
-        $.ajax({
-            url : '?page=' + page,
-            dataType: 'json',
-        }).done(function (data) {
-            $('.posts').html(data);
-            location.hash = page;
-        }).fail(function () {
-            alert('Posts could not be loaded.');
-        });
-    }
+    // $(window).on('hashchange', function() {
+    //     if (window.location.hash) {
+    //         var page = window.location.hash.replace('#', '');
+    //         if (page == Number.NaN || page <= 0) {
+    //             return false;
+    //         } else {
+    //             getPosts(page);
+    //         }
+    //     }
+    // });
+    // $(document).ready(function() {
+    //     $(document).on('click', '.pagination a', function (e) {
+    //         getPosts($(this).attr('href').split('page=')[1]);
+    //         e.preventDefault();
+    //     });
+    // });
+    // function getPosts(page) {
+    //     $.ajax({
+    //         url : '?page=' + page,
+    //         dataType: 'json',
+    //     }).done(function (data) {
+    //         $('.posts').html(data);
+    //         location.hash = page;
+    //     }).fail(function () {
+    //         alert('Posts could not be loaded.');
+    //     });
+    // }
 </script>
 
 
