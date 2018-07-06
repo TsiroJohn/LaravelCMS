@@ -47,7 +47,7 @@ public function comments(){
     return $this->hasMany('App\Comment');
 }
 
-public function photoPlaceholdere(){
+public function photoPlaceholder(){
     return "http://placehold.it/150x150";
 }
 

@@ -119,11 +119,11 @@
                                 @if($posts)
                                     @foreach($posts as $post)                              
                                         <li @if ($post->id % 2 == 1) class="timeline-inverted" @endif>
-                                            <div class="timeline-badge  @if ($post->id % 2 == 1) primary @else success @endif "><i class="fa fa-pencil"></i>
+                                         <div class="timeline-badge  @if ($post->id % 2 == 1) primary @else success @endif "><i class="fa fa-pencil"></i>
                                             </div>
                                             <div class="timeline-panel">
                                                 <div class="timeline-heading">
-                                                    <h4 class="timeline-title">{{ $post->title }}</h4>
+                                                <h4 class="timeline-title">{{ $post->title }}</h4>  
                                                     <p><small class="text-muted"><i class="fa fa-clock-o"></i> {{ $post->created_at->diffForHumans() }} by <a href="#" onclick="return false;">{{$post->user->name}}</a></small>
                                                     </p>
                                                 </div>

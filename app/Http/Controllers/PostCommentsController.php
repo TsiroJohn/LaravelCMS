@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\CommentRequest;
 use App\Comment;
+use Response;
 use App\Post;
 use Auth;
 use Session;
@@ -122,5 +123,16 @@ class PostCommentsController extends Controller
           Session::flash('comment_deleted','The comment has been deleted!');
           return redirect()->back();
 
+    }
+
+    public function changeStatus() 
+    {
+        $id = Input::get('id');
+
+        $comment = Comment::findOrFail($id);
+        $comment->is_active = !$comment->is_active;
+        $comment->save();
+
+        return response()->json($comment);
     }
 }

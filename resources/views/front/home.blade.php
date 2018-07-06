@@ -22,7 +22,7 @@
         </p>
         <p><span class="glyphicon glyphicon-time"></span> Posted on {{ $post->created_at->diffForHumans() }} </p>
         <hr>
-        <img  height="300" width="700" src="{{ $post->photo ? $post->photo->file : $post->photoPlaceholder() }}" alt="">
+        <img  height="300" width="700" src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/750x400'}}" alt="">
         <hr>
         <p>{!! str_limit($post->body,300) !!}</p>
         <a class="btn btn-primary" href="{{ route('home.post',$post->slug) }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>

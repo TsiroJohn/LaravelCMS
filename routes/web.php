@@ -37,6 +37,7 @@ Route::group(['middleware'=>'admin'],function(){
         'store'=>'admin.posts.store',
         'edit'=>'admin.posts.edit',
     ]]);
+
     Route::resource('admin/categories','AdminCategoriesController',['names'=>[
         'index'=>'admin.categories.index',
         'create'=>'admin.categories.create',
@@ -57,6 +58,8 @@ Route::group(['middleware'=>'admin'],function(){
         'edit'=>'admin.comments.edit',
         'show'=>'admin.comments.show',
     ]]);
+    Route::post('admin/comments/changeStatus', array('as' => 'changeStatus', 'uses' => 'PostCommentsController@changeStatus'));
+    
     Route::resource('admin/comment/replies','CommentRepliesController',['names'=>[
         'index'=>'admin.comment.replies.index',
         'show'=>'admin.comment.replies.show',

@@ -24,8 +24,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
-        'category_id' => $faker->numberBetween(1,5),
-        'photo_id' => 1,
+        'category_id' => $faker->numberBetween(1,5),    
         'title'=>$faker->sentence(7,11),
         'body'=>$faker->paragraphs(rand(10,15),true),
 
