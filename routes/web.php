@@ -64,6 +64,7 @@ Route::group(['middleware'=>'admin'],function(){
         'index'=>'admin.comment.replies.index',
         'show'=>'admin.comment.replies.show',
     ]]);
+    Route::post('admin/comment/replies/changeReplyStatus', array('as' => 'changeReplyStatus', 'uses' => 'CommentRepliesController@changeReplyStatus'));
 
     //Για να σε κανει redirect στην αρχική αν δεν έχεις Admin Role
 Route::get('/admin','AdminController@index');

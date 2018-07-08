@@ -26,6 +26,28 @@
         .panel-heading li a:hover {
             text-decoration: none;
         }
+        #myTable td 
+        {
+            text-align: center; 
+            vertical-align: middle;
+        }
+        .icon-button {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            border: 0;
+            background: transparent;
+            color:#cc0000;
+        }
+        .icon-button-edit {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            border: 0;
+            background: transparent;
+        }
         </style>
 @stop
 @section('content')
@@ -56,14 +78,15 @@
                     </ul>
                 </div>
                 <div class="categories panel-body">
-                    <table id="myTable" class='table table-hover'>
+                    <table id="myTable"  class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Id</th>
                                 <th>Name</th>                        
                                 <th>Created</th>
                                 <th>Updated</th>
-                                <th>Actions</th>
+                                <th></th>
 
 
                             </tr>
@@ -71,15 +94,17 @@
                         <tbody>
                             @if($categories)
                                 @foreach($categories as $category)
-                                <tr class="item{{$category->id}}">                                
+                               
+                                <tr class="item{{$category->id}}">    
+                                <td><a  href="{{ route('admin.categories.edit',$category->id) }}" title="Edit" class="icon-button-edit" role="button"><i class="glyphicon glyphicon-edit fa-fw"></a></td>                            
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}} </td>
                                 <td>{{$category->created_at ? $category->created_at->diffForHumans() : 'No date'}}</td>
                                 <td>{{$category->updated_at ? $category->updated_at->diffForHumans() : 'No date'}}</td>
-                                <td><a  href="{{ route('admin.categories.edit',$category->id) }}" class="btn btn-warning" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i>Edit</a>
+                                <td>
                                 
-                                <button class="delete-button btn btn-danger"  data-id="{{$category->id}}" data-title="{{$category->name}}">
-                                                                <span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                <button class="delete-button icon-button" title="Delete"  data-id="{{$category->id}}" data-title="{{$category->name}}">
+                                                                <span class="glyphicon glyphicon-trash"></span></button>
                                 </tr>
                                 @endforeach
                             @endif
@@ -91,9 +116,17 @@
 @stop
 @section('scripts')
 <script type="text/javascript">
-  $(document).ready( function () {
-    $('#myTable').DataTable();
-} );
+
+$(document).ready(function() {
+    $('#myTable').dataTable( {
+            order: [],
+            columnDefs: [ { orderable: false, targets: [0,-1] } ]
+            });
+
+
+});  
+
+
 $(document).on('click', '.delete-button', function (e) {
 
     e.preventDefault();

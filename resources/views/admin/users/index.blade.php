@@ -26,6 +26,28 @@
         .panel-heading li a:hover {
             text-decoration: none;
         }
+        #myTable td 
+        {
+            text-align: center; 
+            vertical-align: middle;
+        }
+        .icon-button {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            border: 0;
+            background: transparent;
+            color:#cc0000;
+        }
+        .icon-button-edit {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            border: 0;
+            background: transparent;
+        }
         </style>
 @stop
 @section('content')
@@ -55,9 +77,10 @@
                         </ul>
                 </div>
                 <div class="users panel-body">
-                        <table id="myTable" class='table table-hover'>
+                        <table id="myTable" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Id</th>
                                     <th>Photo</th>
                                     <th>Name</th>
@@ -66,7 +89,7 @@
                                     <th>Status</th>
                                     <th>Created</th>
                                     <th>Updated</th>
-                                    <th>Actions</th>
+                                    <th></th>
 
                                 </tr>
                             </thead>
@@ -74,6 +97,7 @@
                                 @if($users)
                                     @foreach($users as $user)
                                     <tr class="item{{$user->id}}">
+                                    <td><a  href="{{ route('admin.users.edit',$user->id) }}" class="icon-button-edit" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i></a></td>
                                     <td>{{$user->id}}</td>
                                     <td><img height="65px" width="65px" src="{{ $user->photo ? $user->photo->file : Auth::user()->gravatar }}" alt=""></td>
                                     <td>{{$user->name}} </td>
@@ -82,11 +106,12 @@
                                     <td>{{$user->is_active==1 ? 'Active':'No Active'}}</td>
                                     <td>{{ $user->created_at  ? $user->created_at->diffForHumans() : 'No created date'}}</td>
                                     <td>{{ $user->updated_at  ? $user->updated_at->diffForHumans() : 'No updated date'}}</td>
-                                    <td><a  href="{{ route('admin.users.edit',$user->id) }}" class="btn btn-warning" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i>Edit</a>
+                                    <td>
                                     @if($user->role->name<>'administrator')
-                                    <button class="delete-button btn btn-danger"  data-id="{{$user->id}}" data-title="{{$user->name}}" data-content="{{$user->email}}">
-                                                <span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                    <button class="delete-button icon-button"  data-id="{{$user->id}}" data-title="{{$user->name}}" data-content="{{$user->email}}">
+                                                <span class="glyphicon glyphicon-trash"></span></button>
                                     @endif
+                                    </td>
                                     </tr>
                                     @endforeach
                                 @endif
@@ -101,10 +126,10 @@
 @section('scripts')
 <script type="text/javascript">
  
-  $(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-
+ $('#myTable').dataTable( {
+            order: [],
+            columnDefs: [ { orderable: false, targets: [0,-1,] } ]
+            });
 
   $(document).on('click', '.delete-button', function (e) {
 

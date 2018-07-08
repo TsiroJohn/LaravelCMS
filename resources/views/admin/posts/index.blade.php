@@ -26,6 +26,41 @@
         .panel-heading li a:hover {
             text-decoration: none;
         }
+            #myTable td 
+        {
+            text-align: center; 
+            vertical-align: middle;
+        }
+        .icon-button {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            border: 0;
+            background: transparent;
+            color:#cc0000;
+        }
+        .icon-button-edit {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            border: 0;
+            background: transparent;
+        }
+        .view-post {
+            float: left;
+            border-right:1px solid #bbb;
+            display: block;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .view-comments {
+            float: left;
+            display: block;
+            padding: 14px 16px;
+            text-align: center;
+        }
         </style>
 @stop
 
@@ -58,10 +93,10 @@
                     </ul>
                 </div>
                 <div class="posts panel-body">
-                    <table id="myTable" class='table  table-hover'>
+                    <table id="myTable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                             
+                                <th></th>
                                 <th>Id</th>
                                 <th>Photo</th>   
                                 <th>Title</th>
@@ -70,6 +105,8 @@
                                 <th>Created</th>
                                 <th>Updated</th>
                                 <th>Actions</th>
+                                <th></th>
+                                
 
                             </tr>
                         </thead>
@@ -77,7 +114,7 @@
                             @if($posts)
                                 @foreach($posts as $post)
                                 <tr class="item{{$post->id}}">
-                                  
+                                 <td><a  href="{{ route('admin.posts.edit',$post->id) }}" class="icon-button-edit" title="Edit" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i></a></td> 
                                 <td>{{$post->id}}</td>
                                 <td><img height="65px" width="65px" src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/150x150'}}" alt=""></td>
                                 <td>{{ str_limit($post->title,30)}}</td>
@@ -86,12 +123,12 @@
                                 <td>{{$post->created_at->diffForHumans()}}</td>
                                 <td>{{$post->updated_at->diffForHumans()}}</td>
                                 <td>
-                                <a class="btn btn-success" href="{{ route('home.post',$post->slug) }}"><i class="fa fa-eye fa-fw"></i> View</a>
-                                <a  class="btn btn-primary @if (!count($post->comments)>0) disabled @endif"  href="{{ route('admin.comments.show',$post->id) }}"><i class="fa fa-eye fa-fw"></i> Comments</a> <a  href="{{ route('admin.posts.edit',$post->id) }}" class="btn btn-warning" role="button"><i class="glyphicon glyphicon-edit fa-fw"></i> Edit</a>
-                                <button class="delete-button btn btn-danger"  data-id="{{$post->id}}" data-title="{{$post->title}}" data-content="{{$post->body}}">
-                                                <span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                <a class="view-post" href="{{ route('home.post',$post->slug) }}">View Post</a>
+                                <a  class="view-comments @if (!count($post->comments)>0) disabled @endif"  href="{{ route('admin.comments.show',$post->id) }}">View Comments</a> 
+                                
                                 </td>
-
+                                <td>  <button class="delete-button  icon-button"  title="Delete"  data-id="{{$post->id}}">
+                                                <span class="glyphicon glyphicon-trash"></span>&nbsp;</button></td>
 
                                 </tr>
                                 @endforeach
@@ -109,10 +146,15 @@
 @section('scripts')
 <script type="text/javascript">
   
-  $(document).ready( function () {
-    $('#myTable').DataTable();
-} );
 
+$(document).ready(function() {
+    $('#myTable').dataTable( {
+            order: [],
+            columnDefs: [ { orderable: false, targets: [0,-1,-2] } ]
+            });
+
+
+});  
 
 $(document).on('click', '.delete-button', function (e) {
 

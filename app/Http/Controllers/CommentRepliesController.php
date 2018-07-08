@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 use Auth;
@@ -119,5 +120,16 @@ class CommentRepliesController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function changeReplyStatus() 
+    {
+        $id = Input::get('id');
+
+        $reply = CommentReply::findOrFail($id);
+        $reply->is_active = !$reply->is_active;
+        $reply->save();
+
+        return response()->json($reply);
     }
 }

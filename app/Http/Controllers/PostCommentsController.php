@@ -11,6 +11,7 @@ use Response;
 use App\Post;
 use Auth;
 use Session;
+use Redirect;
 
 
 class PostCommentsController extends Controller
@@ -53,9 +54,15 @@ class PostCommentsController extends Controller
         ];
         Comment::create($data);
 
-        $request->session()->flash('comment_message','Your message has been submitted and is waiting approval');
+        $notification = array(
+            'message' => 'Your message has been submitted and is waiting approval', 
+            'alert-type' => 'success'
+        );
+        //   return Redirect::to('admin/users')->with($notification);
 
-        return redirect()->back();
+        // $request->session()->flash('comment_message','Your message has been submitted and is waiting approval');
+
+        return redirect()->back()->with($notification);
 
 
     }

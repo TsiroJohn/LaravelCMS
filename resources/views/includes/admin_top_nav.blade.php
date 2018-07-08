@@ -19,7 +19,7 @@
                     <i class="fa fa-user fa-fw"></i>{{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <li><a href="{{ route('admin.users.edit',auth()->user()->id) }}"><i class="fa fa-user fa-fw"></i> User Profile</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
@@ -53,7 +53,7 @@
         {{--<ul class="dropdown-menu" role="menu">--}}
         {{--<li><a href="{{ url('/auth/logout') }}">Logout</a></li>--}}
 
-        {{--<li><a href="{{ url('/admin/profile') }}/{{auth()->user()->id}}">Profile</a></li>--}}
+        {{--<li><a href="{{ route('admin.users.edit',auth()->user()->id) }}">Profile</a></li>--}}
         {{--</ul>--}}
         {{--</li>--}}
         {{--@endif--}}
