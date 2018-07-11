@@ -16,9 +16,9 @@
 
 <!-- Blog Categories Well -->
 <div class="well">
-    <h4>Blog Categories</h4>
+    <h4>Categories</h4>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <ul class="list-unstyled">
             @if($categories)
                 @foreach($categories as $category)
@@ -35,8 +35,21 @@
 
 <!-- Side Widget Well -->
 <div class="well">
-    <h4>Side Widget Well</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+    <h4>Tags</h4>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="list-inline">
+            @if($tags)
+                @foreach($tags as $tag)
+                     <li><a href="#"><span class="badge badge-secondary">{{ $tag->name }}</span></a>
+                    </li>
+                @endforeach
+            @endif  
+            </ul>
+        </div>
+      
+    </div>
+    <!-- /.row -->
 </div>
 
 </div>

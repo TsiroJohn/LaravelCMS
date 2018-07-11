@@ -12,6 +12,7 @@ use App\Photo;
 use App\User;
 use App\Category;
 use App\Comment;
+use App\Tag;
 use File;
 use Session;
 use Alert;
@@ -50,8 +51,9 @@ class AdminPostsController extends Controller
     {
         //
         $categories=Category::pluck('name','id')->all();
+        $tags=Tag::pluck('name','id')->all();
         
-        return view('admin.posts.create',compact('categories'));
+        return view('admin.posts.create',compact('categories','tags'));
         
     }
 
@@ -63,7 +65,7 @@ class AdminPostsController extends Controller
      */
     public function store(PostsCreateRequest $request)
     {
-        
+        // dd($request);
         $input = $request->all();
          $user = Auth::user();
 
@@ -74,7 +76,8 @@ class AdminPostsController extends Controller
           $input['photo_id']= $photo-> id;
         }
 
-         $user->posts()->create($input);
+        $post= $user->posts()->create($input);
+        $post->tags()->sync($request->tags,false);
         // Session::flash('inserted_post','A new post has been created!');
 
         $notification = array(
@@ -106,6 +109,7 @@ class AdminPostsController extends Controller
     {
         $post=Post::findOrFail($id);
         $categories=Category::pluck('name','id')->all();
+        $tags=Tag::pluck('name','id')->all();
 
         return view('admin.posts.edit',compact('post','categories'));
         //

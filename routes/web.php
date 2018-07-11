@@ -44,6 +44,12 @@ Route::group(['middleware'=>'admin'],function(){
         'store'=>'admin.categories.store',
         'edit'=>'admin.categories.edit',
     ]]);
+    Route::resource('admin/tags','AdminTagController',['names'=>[
+        'index'=>'admin.tags.index',
+        'create'=>'admin.tags.create',
+        'store'=>'admin.tags.store',
+        'edit'=>'admin.tags.edit',
+    ]]);
     Route::resource('admin/media','AdminMediaController',['names'=>[
         'index'=>'admin.media.index',
         'create'=>'admin.media.create',

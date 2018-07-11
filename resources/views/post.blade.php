@@ -21,18 +21,26 @@
                     by <a href="#">{{ $post->user->name }}</a>
                 </p>
 
+               
+               @if ($post->tags)
+                <div class="tags">
+                    @foreach($post->tags as $tag)
+                    <span class="badge badge-primary">{{ $tag->name }}</span>
+                    @endforeach
+                </div>
+                @endif
                 <hr>
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{ $post->created_at->diffForHumans() }}</p>
 
                 <hr>
-
+               
                 <!-- Preview Image -->
                 <img class="img-responsive"  src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/750x400'}}" alt="">
 
                 <hr>
-
+               
                 <!-- Post Content -->
                 <p class="lead">{!! $post->body !!}
 
