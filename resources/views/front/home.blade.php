@@ -20,7 +20,18 @@
         <p class="lead">
             by {{ $post->user->name }}
         </p>
+
+           @if ($post->tags)
+                <div class="tags">
+                    @foreach($post->tags as $tag)
+                    <span class="badge badge-primary">{{ $tag->name }}</span>
+                    @endforeach
+                </div>
+         @endif
+        <hr>
+        
         <p><span class="glyphicon glyphicon-time"></span> Posted on {{ $post->created_at->diffForHumans() }} </p>
+     
         <hr>
         <img  height="300" width="700" src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/750x400'}}" alt="">
         <hr>

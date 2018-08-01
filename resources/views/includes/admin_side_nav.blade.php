@@ -17,30 +17,35 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.users.index') }}"><i class="fa fa-user fa-fw"></i>Users</a>
+                        <a href="{{ route('admin.users.index') }}"><i class="fa fa-user fa-fw"></i> Users</a>
                       
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.posts.index') }}"><i class="fa fa-pencil fa-fw"></i>Posts</a>
+                        <a href="{{ route('admin.posts.index') }}"><i class="fa fa-pencil fa-fw"></i> Posts</a>
                        
                         <!-- /.nav-second-level -->
                     </li>
 
 
                     <li>
-                        <a href="{{ route('admin.categories.index') }}"><i class="fa fa-archive fa-fw"></i>Categories</a>
+                        <a href="{{ route('admin.categories.index') }}"><i class="fa fa-archive fa-fw"></i> Categories</a>
+                        
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.tags.index') }}"><i class="fa fa-tag fa-fw"></i> Tags</a>
                         
                         <!-- /.nav-second-level -->
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.media.index') }}"><i class="fa fa-image fa-fw"></i>Media</a>
+                        <a href="{{ route('admin.media.index') }}"><i class="fa fa-image fa-fw"></i> Media</a>
                        
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="{{ route('admin.comments.index') }}"><i class="fa fa-comments fa-fw"></i>Comments</a>
+                        <a href="{{ route('admin.comments.index') }}"><i class="fa fa-comments fa-fw"></i> Comments</a>
                        
                         <!-- /.nav-second-level -->
                     </li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Tag;
 use App\Category;
 use Carbon\Carbon;
 
@@ -30,19 +31,20 @@ class HomeController extends Controller
         
         $posts = Post::paginate(5);
         $categories = Category::all();
+        $tags = Tag::all();
 
 
-        return view('front/home',compact('posts','categories','year'));
+        return view('front/home',compact('posts','categories','tags'));
     }
 
     public function post($slug){
         $post = Post::findBySlugOrFail($slug);
+        $tags = Tag::all();
 
         $categories=Category::all();
         
         $comments = $post->comments()->whereIsActive(1)->get();
-        
-        return view('post',compact('post','categories','comments'));
+        return view('post',compact('post','categories','comments','tags'));
 
     }
 }

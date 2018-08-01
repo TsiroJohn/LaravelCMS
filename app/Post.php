@@ -47,6 +47,11 @@ public function comments(){
     return $this->hasMany('App\Comment');
 }
 
+public function tags()
+{
+    return $this->belongsToMany('App\Tag');
+}
+
 public function photoPlaceholder(){
     return "http://placehold.it/150x150";
 }

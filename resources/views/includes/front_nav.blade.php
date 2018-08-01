@@ -23,9 +23,11 @@
                         <a href="{{ url('/register') }}">Register</a>
                     </li>
                     @else
+                    @if (Auth::user()->IsAdmin())
                     <li>
                         <a href="/admin">Admin</a>
                     </li>
+                    @endif
                     <li>
                         <a href="/logout">Logout</a>
                     </li>
