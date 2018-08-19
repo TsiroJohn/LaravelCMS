@@ -3,6 +3,7 @@
 <!-- Blog Search Well -->
 <div class="well">
     <h4>Blog Search</h4>
+    <hr>
     <div class="input-group">
         <input type="text" class="form-control">
         <span class="input-group-btn">
@@ -17,6 +18,7 @@
 <!-- Blog Categories Well -->
 <div class="well">
     <h4>Categories</h4>
+    <hr>
     <div class="row">
         <div class="col-lg-12">
             <ul class="list-unstyled">
@@ -36,6 +38,7 @@
 <!-- Side Widget Well -->
 <div class="well">
     <h4>Tags</h4>
+    <hr>
     <div class="row">
         <div class="col-lg-12">
             <ul class="list-inline">

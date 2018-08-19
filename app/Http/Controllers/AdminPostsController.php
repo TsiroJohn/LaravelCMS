@@ -111,7 +111,7 @@ class AdminPostsController extends Controller
         $categories=Category::pluck('name','id')->all();
         $tags=Tag::pluck('name','id')->all();
 
-        return view('admin.posts.edit',compact('post','categories'));
+        return view('admin.posts.edit',compact('post','categories','tags'));
         //
     }
 
@@ -124,7 +124,7 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
         $input = $request->all();
         if($file = $request->file('photo_id')){
             $name= time().$file->getClientOriginalName();
@@ -134,8 +134,10 @@ class AdminPostsController extends Controller
           }
 
         //   Auth::user()->posts()->whereId($id)->first()->update($input);
-          Post::findOrFail($id)->update($input);
-        //   Session::flash('updated_post','The post has been updated!');
+          $post = Post::findOrFail($id);
+          $post->update($input);
+        //   $tags = $request->input('tag', []);
+          $post->tags()->sync($request->tags, true);
 
 
           $notification = array(

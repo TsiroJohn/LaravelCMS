@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('posts')->truncate();
         DB::table('roles')->truncate();
+        DB::table('tags')->truncate();
         DB::table('categories')->truncate();
         DB::table('photos')->truncate();
         DB::table('comments')->truncate();
@@ -66,6 +67,67 @@ class DatabaseSeeder extends Seeder
             'updated_at' => \Carbon\Carbon::now(),
         ]);
 
+        DB::table('tags')->insert([
+            'name' => 'PHP',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'name' => 'Node',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'name' => 'C#',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'name' => 'Java',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'name' => 'Javascript',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'name' => 'Scala',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'name' => 'Spark',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'name' => 'Laravel',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'name' => 'Python',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('tags')->insert([
+            'name' => 'Django',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        
         factory(App\User::class,10)->create()->each(function($user){
             $user->posts()->save(factory(App\Post::class)->make());
         });
