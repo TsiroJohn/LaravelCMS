@@ -48,7 +48,7 @@
         <!-- Pagination -->
         <div class="row">
             <div class="col-sm-6 col-sm-offset-5">
-        {{ $posts->render() }}
+        
             </div>
         </div>
 

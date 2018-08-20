@@ -14,10 +14,10 @@
     </div>
     <!-- /.input-group -->
 </div>
+<!-- Blog Archives Well -->
 
-<!-- Blog Categories Well -->
 <div class="well">
-    <h4>Categories</h4>
+    <h4>Archives</h4>
     <hr>
     <div class="row">
         <div class="col-lg-12">
@@ -25,6 +25,26 @@
             @if($categories)
                 @foreach($categories as $category)
                      <li><a href="#">{{ $category->name }}</a>
+                    </li>
+                @endforeach
+            @endif  
+            </ul>
+        </div>
+      
+    </div>
+    <!-- /.row -->
+</div>
+
+<!-- Blog Categories Well -->
+<div class="well">
+    <h4>Archives</h4>
+    <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="list-unstyled">
+            @if($archives)
+                @foreach($archives as $stats)
+                     <li><a href="/?month={{ $stats['month'] }}&year={{ $stats['year'] }}">{{ $stats['month']. ' ' . $stats['year'] }}</a>
                     </li>
                 @endforeach
             @endif  

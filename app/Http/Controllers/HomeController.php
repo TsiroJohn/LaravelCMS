@@ -29,12 +29,31 @@ class HomeController extends Controller
     public function index()
     {
         
-        $posts = Post::paginate(5);
+
+                    if (request(['month', 'year'])) {
+                        $posts = Post::latest()
+                        ->filter(request(['month', 'year']))
+                        ->get();
+                        } else {
+                        $posts = Post::latest()->get();
+                        }
+        // if ($month = request('month')){
+        //     $posts->whereMonth('created_at',Carbon::parse($month)->month);
+        // }
+
+        // if($year =request('year')){
+        //     $posts->whereYear('created_at',$year);
+        // }
+
         $categories = Category::all();
         $tags = Tag::all();
+        $archives = Post::selectRaw('year(created_at) year,monthname(created_at) month, count(*) published')
+                    ->groupBy('year','month')
+                    ->orderByRaw('min(created_at) desc')
+                    ->get()
+                    ->toArray();
 
-
-        return view('front/home',compact('posts','categories','tags'));
+        return view('front/home',compact('posts','categories','tags','archives'));
     }
 
     public function post($slug){
@@ -42,9 +61,14 @@ class HomeController extends Controller
         $tags = Tag::all();
 
         $categories=Category::all();
-        
+        $archives = Post::selectRaw('year(created_at) year,monthname(created_at) month, count(*) published')
+        ->groupBy('year','month')
+        ->orderByRaw('min(created_at) desc')
+        ->get()
+        ->toArray();
+
         $comments = $post->comments()->whereIsActive(1)->get();
-        return view('post',compact('post','categories','comments','tags'));
+        return view('post',compact('post','categories','comments','tags','archives'));
 
     }
 }
