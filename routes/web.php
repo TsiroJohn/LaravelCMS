@@ -72,10 +72,12 @@ Route::group(['middleware'=>'admin'],function(){
     ]]);
     Route::post('admin/comment/replies/changeReplyStatus', array('as' => 'changeReplyStatus', 'uses' => 'CommentRepliesController@changeReplyStatus'));
 
-    //Για να σε κανει redirect στην αρχική αν δεν έχεις Admin Role
-Route::get('/admin','AdminController@index');
-
+ //Για να σε κανει redirect στην αρχική αν δεν έχεις Admin Role
+ Route::get('/admin','AdminController@index');
 });
+
+
+   
 
 Route::group(['middleware'=>'auth'],function(){
 

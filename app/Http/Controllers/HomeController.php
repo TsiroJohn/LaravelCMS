@@ -18,7 +18,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //Αφαιρέθηκε ώστε να μπο΄ρεί κάποιος να βλέπει το site, χώρις απαραίτητα να ειναι μέλος
+        // $this->middleware('auth');
     }
 
     /**
