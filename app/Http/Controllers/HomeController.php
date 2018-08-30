@@ -38,13 +38,31 @@ class HomeController extends Controller
                         } else {
                         $posts = Post::latest()->get();
                         }
-        // if ($month = request('month')){
-        //     $posts->whereMonth('created_at',Carbon::parse($month)->month);
-        // }
 
-        // if($year =request('year')){
-        //     $posts->whereYear('created_at',$year);
-        // }
+        $categories = Category::all();
+        $tags = Tag::all();
+        $archives = Post::selectRaw('year(created_at) year,monthname(created_at) month, count(*) published')
+                    ->groupBy('year','month')
+                    ->orderByRaw('min(created_at) desc')
+                    ->get()
+                    ->toArray();
+
+        return view('front/home',compact('posts','categories','tags','archives'));
+    }
+
+    public function category($id)
+    {
+        
+
+                    // if (request(['month', 'year'])) {
+                    //     $posts = Post::latest()
+                    //     ->filter(request(['month', 'year']))
+                    //     ->get();
+                    //     } else {
+                        $posts = Post::latest()
+                        ->where('category_id',$id)
+                        ->get();
+                        // }
 
         $categories = Category::all();
         $tags = Tag::all();

@@ -20,6 +20,7 @@ Route::get('/home', 'HomeController@index');
 // Route::resource('admin/users','AdminUsersController');
 
 Route::get('/post/{id}',['as'=>'home.post','uses'=>'HomeController@post']);
+Route::get('/category/{category}',['as'=>'category','uses'=>'HomeController@category']);
 
 
 
@@ -64,6 +65,7 @@ Route::group(['middleware'=>'admin'],function(){
         'edit'=>'admin.comments.edit',
         'show'=>'admin.comments.show',
     ]]);
+
     Route::post('admin/comments/changeStatus', array('as' => 'changeStatus', 'uses' => 'PostCommentsController@changeStatus'));
     
     Route::resource('admin/comment/replies','CommentRepliesController',['names'=>[
@@ -82,6 +84,10 @@ Route::group(['middleware'=>'admin'],function(){
 Route::group(['middleware'=>'auth'],function(){
 
     Route::post('comment/reply','CommentRepliesController@createReply');
+
+    Route::post('admin/comments','PostCommentsController@store');
+    
+
 
 });
 

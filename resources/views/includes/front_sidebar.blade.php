@@ -17,14 +17,14 @@
 <!-- Blog Archives Well -->
 
 <div class="well">
-    <h4>Archives</h4>
+    <h4>Categories</h4>
     <hr>
     <div class="row">
         <div class="col-lg-12">
             <ul class="list-unstyled">
             @if($categories)
                 @foreach($categories as $category)
-                     <li><a href="#">{{ $category->name }}</a>
+                     <li><a href="{{ route('category',$category->id) }}">{{ $category->name }}</a>
                     </li>
                 @endforeach
             @endif  
@@ -64,7 +64,7 @@
             <ul class="list-inline">
             @if($tags)
                 @foreach($tags as $tag)
-                     <li><a href="#"><span class="badge badge-secondary">{{ $tag->name }}</span></a>
+                     <li><a href="#"><span class="badge badge-primary">{{ $tag->name }} {{ $tag->posts->count() }}</span></a>
                     </li>
                 @endforeach
             @endif  

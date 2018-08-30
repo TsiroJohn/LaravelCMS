@@ -82,7 +82,7 @@
                 @foreach($comments as $comment)
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img class="media-object" height="64px" width="64px" src="{{ $comment->user->photo ? $comment->user->photo->file : Auth::user()->gravatar }}" title="{{ $comment->user->name }}">
+                            <img class="media-object" height="40px" width="40px" src="{{ $comment->user->photo ? $comment->user->photo->file : 'http://identicon.org?t=$comment->user->name&s=32' }}" title="{{ $comment->user->name }}">
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">{{ $comment->user->name }}
@@ -98,7 +98,7 @@
 
                                                 <div class="media" style="margin-top:20px;" >
                                                         <a class="pull-left" href="#">
-                                                            <img height="64px" width="64px" class="media-object" src="{{ $comment->user->photo ? $comment->user->photo->file :Auth::user()->gravatar }}" title="{{ $reply->user->name }}">
+                                                            <img height="40px" width="40px" class="media-object" src="{{ $reply->user->photo ? $reply->user->photo->file : 'http://identicon.org?t=$reply->user->name&s=32' }}" title="{{ $reply->user->name }}">
                                                         </a>
                                                         <div class="media-body">
                                                             <h4 class="media-heading">{{ $reply->user->name }}
@@ -108,8 +108,9 @@
                                                         </div>
                                                 </div>
                                                 <div class="comment-reply-container">
+                                                @if(Auth::check())
                                                 <a href="javascript:;" class="toggle-reply">Reply</a>
-                                                        
+                                                @endif  
                                                 <div class="comment-reply">
                                                
                                                         {!! Form::open(['method'=>'POST','style'=>'margin-top:10px;','action'=>'CommentRepliesController@createReply']) !!}
