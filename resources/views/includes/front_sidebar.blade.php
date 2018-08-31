@@ -64,7 +64,7 @@
             <ul class="list-inline">
             @if($tags)
                 @foreach($tags as $tag)
-                     <li><a href="#"><span class="badge badge-primary">{{ $tag->name }} {{ $tag->posts->count() }}</span></a>
+                     <li><a href="{{ route('tag',$tag->id) }}"><span class="badge badge-primary">{{ $tag->name }} {{ $tag->posts->count() }}</span></a>
                     </li>
                 @endforeach
             @endif  

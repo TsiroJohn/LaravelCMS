@@ -34,9 +34,10 @@ class HomeController extends Controller
                     if (request(['month', 'year'])) {
                         $posts = Post::latest()
                         ->filter(request(['month', 'year']))
-                        ->get();
+                        ->paginate(5);
                         } else {
-                        $posts = Post::latest()->get();
+                        $posts = Post::orderBy('created_at','desc')
+                        ->paginate(5);
                         }
 
         $categories = Category::all();
@@ -53,16 +54,34 @@ class HomeController extends Controller
     public function category($id)
     {
         
+        $posts = Post::where('category_id',$id)
+        ->orderBy('created_at','desc')
+        ->paginate(5);
 
-                    // if (request(['month', 'year'])) {
-                    //     $posts = Post::latest()
-                    //     ->filter(request(['month', 'year']))
-                    //     ->get();
-                    //     } else {
-                        $posts = Post::latest()
-                        ->where('category_id',$id)
-                        ->get();
-                        // }
+        $categories = Category::all();
+        $tags = Tag::all();
+        $archives = Post::selectRaw('year(created_at) year,monthname(created_at) month, count(*) published')
+                    ->groupBy('year','month')
+                    ->orderByRaw('min(created_at) desc')
+                    ->get()
+                    ->toArray();
+
+        return view('front/home',compact('posts','categories','tags','archives'));
+    }
+
+    public function tag($id)
+    {
+        
+        $posts=Tag::findOrFail($id)->posts;
+    //     $tagName=$tag->name;
+    //     Post::whereHas('tags', function($q) use($tagName) {
+    //     $q->whereIn('name', $tagName);
+    // })
+        // $posts = Post::with('tags')->whereDoesntHave('tags', function ($q) {
+        //     $q->where('tag'.'id', '=', 2);})
+        // ->orderBy('created_at','desc')
+        // 
+      
 
         $categories = Category::all();
         $tags = Tag::all();

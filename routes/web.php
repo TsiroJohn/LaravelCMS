@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/post/{id}',['as'=>'home.post','uses'=>'HomeController@post']);
 Route::get('/category/{category}',['as'=>'category','uses'=>'HomeController@category']);
+Route::get('/tag/{tag}',['as'=>'tag','uses'=>'HomeController@tag']);
 
 
 
