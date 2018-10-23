@@ -23,7 +23,9 @@ Clone this repository and install the dependencies.
 
     $ git clone https://github.com/TsiroJohn/LaravelCMS.git CUSTOM_DIRECTORY && cd CUSTOM_DIRECTORY
     $ composer install
-    
+
+Rename the .env.example file to .env. Make any changes you need to in here such as changing the DB_DATABASE. 
+
 Generate an application key and migrate the tables, then seed.
 
     $ php artisan key:generate
