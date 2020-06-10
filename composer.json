@@ -9,7 +9,7 @@
         "laravel/framework": "5.6.25",
         "laravelcollective/html": "5.6.9",
         "uxweb/sweet-alert": "1.4.2",
-        "cviebrock/eloquent-sluggable": "4.5.1",
+        "cviebrock/eloquent-sluggable": "7.0.1",
         "unisharp/laravel-filemanager": "1.8.4",
         "intervention/image": "2.4.2"
     },
