@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19989810607c28c766f05e69b96d2433",
+    "content-hash": "1f3f17aa1963f73bdaacac3c5905a30f",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -3151,16 +3151,16 @@
         },
         {
             "name": "unisharp/laravel-filemanager",
-            "version": "v1.8.4",
+            "version": "v1.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/UniSharp/laravel-filemanager.git",
-                "reference": "ccbba303a3a66a9706b50c98923af12e2f9ac02a"
+                "reference": "aaf2764f26eb8dcc9356bea1e25010333c2e61f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/ccbba303a3a66a9706b50c98923af12e2f9ac02a",
-                "reference": "ccbba303a3a66a9706b50c98923af12e2f9ac02a",
+                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/aaf2764f26eb8dcc9356bea1e25010333c2e61f4",
+                "reference": "aaf2764f26eb8dcc9356bea1e25010333c2e61f4",
                 "shasum": ""
             },
             "require": {
@@ -3186,14 +3186,14 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Unisharp\\Laravelfilemanager\\LaravelFilemanagerServiceProvider"
+                        "UniSharp\\LaravelFilemanager\\LaravelFilemanagerServiceProvider"
                     ],
                     "aliases": []
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Unisharp\\Laravelfilemanager\\": "src/"
+                    "UniSharp\\LaravelFilemanager\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3221,7 +3221,7 @@
                 "tinymce",
                 "upload"
             ],
-            "time": "2017-12-28T09:23:53+00:00"
+            "time": "2018-07-05T11:36:08+00:00"
         },
         {
             "name": "uxweb/sweet-alert",
