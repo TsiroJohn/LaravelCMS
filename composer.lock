@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19989810607c28c766f05e69b96d2433",
+    "content-hash": "b227edc0ebe1ec4618a9428c0f371da6",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -3225,16 +3225,16 @@
         },
         {
             "name": "uxweb/sweet-alert",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uxweb/sweet-alert.git",
-                "reference": "92519b916755d673f92343767edd06110b167d05"
+                "reference": "b812f3a30b96e6a5e5597ab0fe2f29e8743c00d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uxweb/sweet-alert/zipball/92519b916755d673f92343767edd06110b167d05",
-                "reference": "92519b916755d673f92343767edd06110b167d05",
+                "url": "https://api.github.com/repos/uxweb/sweet-alert/zipball/b812f3a30b96e6a5e5597ab0fe2f29e8743c00d2",
+                "reference": "b812f3a30b96e6a5e5597ab0fe2f29e8743c00d2",
                 "shasum": ""
             },
             "require": {
@@ -3243,8 +3243,8 @@
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "mockery/mockery": "^0.9.5",
-                "phpunit/phpunit": "^5.5"
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "^6.0"
             },
             "type": "library",
             "extra": {
@@ -3282,7 +3282,7 @@
                 "notifier",
                 "sweet"
             ],
-            "time": "2017-09-10T17:14:08+00:00"
+            "time": "2018-07-23T20:28:35+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
